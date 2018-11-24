@@ -1,5 +1,5 @@
 build:
   docker:
-    #core: rasa_core.Dockerfile
-    #nlu: rasa_nlu.Dockerfile
+    core: rasa_core.Dockerfile
     sdk: rasa_core_sdk.Dockerfile
+    nlu: rasa_nlu.Dockerfile
