@@ -1,3 +1,7 @@
 build:
   docker:
     web: rasa_core.Dockerfile
+    nlu: rasa_nlu.Dockerfile
+    sdk: rasa_core_sdk.Dockerfile
+run:
+  web: python -m rasa_core.run --enable_api --core models -c rest --endpoints config/endpoints.yml --credentials config/credentials.yml -u current/

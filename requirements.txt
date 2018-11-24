@@ -1,2 +1,0 @@
-rasa-core
-rasa-nlu
