@@ -1,0 +1,31 @@
+%YAML 1.1
+---
+actions:
+- utter_greet
+- utter_happy
+- utter_cheer_up
+- utter_goodbye
+- action_joke
+config:
+  store_entities_as_slots: true
+entities: []
+forms: []
+intents:
+- greet:
+    use_entities: true
+- mood_happy:
+    use_entities: true
+- mood_unhappy:
+    use_entities: true
+- goodbye:
+    use_entities: true
+slots: {}
+templates:
+  utter_cheer_up:
+  - text: Don't be sad. Keep smiling!
+  utter_goodbye:
+  - text: Goodbye!
+  utter_greet:
+  - text: Hi, how is it going?
+  utter_happy:
+  - text: Great, carry on!

@@ -1,0 +1,8 @@
+POST http://localhost:5005
+####
+curl --request POST \
+  --url http://localhost:5005/webhooks/rest/webhook \
+  --header 'content-type: application/json' \
+  --data '{
+    "message": "very bad"
+  }'

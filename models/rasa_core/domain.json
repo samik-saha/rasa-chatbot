@@ -1,0 +1,17 @@
+{
+  "states": [
+    "intent_goodbye",
+    "intent_greet",
+    "intent_mood_happy",
+    "intent_mood_unhappy",
+    "prev_action_listen",
+    "prev_action_restart",
+    "prev_action_default_fallback",
+    "prev_action_deactivate_form",
+    "prev_utter_greet",
+    "prev_utter_happy",
+    "prev_utter_cheer_up",
+    "prev_utter_goodbye",
+    "prev_action_joke"
+  ]
+}
