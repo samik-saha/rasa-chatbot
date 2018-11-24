@@ -2,10 +2,31 @@ version: '3.0'
 
 services:
   rasa_core:
-    image: samik/rasa-core:latest
+    image: rasa/rasa_core:latest
     ports:
       - 5005:5005
+    volumes:
+      - ./models/rasa_core:/app/models
+      - ./config:/app/config
+    command:
+      - start
+      - --core
+      - models
+      - -c
+      - rest
+      - --endpoints
+      - config/endpoints.yml
+      - -u
+      - current/
   rasa_nlu:
-    image: samik/rasa-nlu:latest
+    image: rasa/rasa_nlu:latest-spacy
+    volumes:
+      - ./models/rasa_nlu:/app/models
+    command:
+      - start
+      - --path
+      - models
   action_server:
-    image: samik/rasa-core-sdk:latest
+    image: rasa/rasa_core_sdk:latest
+    volumes:
+      - ./actions:/app/actions
