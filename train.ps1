@@ -1,0 +1,2 @@
+﻿docker run -v C:/users/samik/git/rasa-chatbot:/app/project -v C:/users/samik/git/rasa-chatbot/models/rasa_core:/app/models rasa/rasa_core:latest  train --domain project/domain.yml --stories project/data/stories.md --out models
+docker run -it -v C:/users/samik/git/rasa-chatbot/models/rasa_core:/app/models rasa/rasa_core:latest start --core models
