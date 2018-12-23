@@ -10,7 +10,7 @@ Both action server and rasa-core runs as separate processes in the same containe
 docker build -t rasa-chatbot .
 docker run -it --rm -p 5005:5005 -e PORT=5005 rasa-chatbot
 ```
-It starts a webserver with resh api and listens for messages at localhost:5005
+It starts a webserver with rest api and listens for messages at localhost:5005
 
 #### Test over REST api
 
@@ -60,7 +60,7 @@ docker run --rm -v ${PWD}:/app rasa-chatbot python3 \
 ```
 
 ## Deploy to Heroku
-On heroku free tier we can start two containers using two dynos, but there isn't a way for the containers to communicate with each other on Heroku. So, wep push everything (actions server/rasa core/nlu) in the same container.
+On heroku free tier we can start two containers using two dynos, but there isn't a way for the containers to communicate with each other on Heroku. So, we push everything (actions server/rasa core/nlu) in the same container.
 
 ```bash
 heroku container:push web
