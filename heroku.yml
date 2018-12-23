@@ -1,9 +1,6 @@
 build:
   docker:
     web: Dockerfile
-    actions: actions/Dockerfile.actions
-    nlu: models/rasa_nlu/Dockerfile.nlu
 run:
   web: run python -m rasa_core.run --enable_api --core models -c rest --endpoints config/endpoints.yml --credentials config/credentials.yml -u current/
   actions: echo test
-  nlu: run python -m rasa_nlu.server --path models

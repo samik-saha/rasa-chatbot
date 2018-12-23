@@ -10,5 +10,6 @@ class ActionJoke(Action):
   def run(self, dispatcher, tracker, domain):
     request = requests.get('http://api.icndb.com/jokes/random').json() #make an api call
     joke = request['value']['joke'] #extract a joke from returned json response
+    dispatcher.utter_message('Here is a joke to cheer you up!')
     dispatcher.utter_message(joke) #send the message back to the user
     return []

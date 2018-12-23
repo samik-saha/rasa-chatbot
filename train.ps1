@@ -1,2 +1,11 @@
-﻿docker run -v C:/users/samik/git/rasa-chatbot:/app/project -v C:/users/samik/git/rasa-chatbot/models/rasa_core:/app/models rasa/rasa_core:latest  train --domain project/domain.yml --stories project/data/stories.md --out models
-docker run -it -v C:/users/samik/git/rasa-chatbot/models/rasa_core:/app/models rasa/rasa_core:latest start --core models
+﻿# Train Dialoge model
+docker run --rm -v ${PWD}:/app rasa-chatbot python3 `
+           -m rasa_core.train -d /app/domain.yml `
+           -s /app/data/stories.md `
+           -o /app/models/rasa_core
+
+# Train NLU model
+docker run --rm -v ${PWD}:/app rasa-chatbot python3 `
+           -m rasa_nlu.train -c /app/config/nlu_config.yml `
+           -d /app/data/nlu.md --fixed_model_name nlu `
+           -o /app/models/rasa_nlu --project current

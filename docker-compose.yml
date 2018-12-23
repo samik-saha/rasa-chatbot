@@ -1,32 +1,37 @@
 version: '3.0'
 
 services:
-  rasa_core:
-    image: rasa/rasa_core:latest
+  rasa_chatbot:
+    build: .
+    image: rasa-chatbot:latest
     ports:
       - 5005:5005
     volumes:
-      - ./models/rasa_core:/app/models
+      - ./models:/app/models
       - ./config:/app/config
     command:
-      - start
+      - python3
+      - -m
+      - rasa_core.run
+      - --enable_api
       - --core
-      - models
-      - -c
-      - rest
-      - --endpoints
-      - config/endpoints.local.yml
+      - /app/models/rasa_core
       - -u
-      - current/nlu
-  rasa_nlu:
-    image: rasa/rasa_nlu:latest-spacy
-    volumes:
-      - ./models/rasa_nlu:/app/models
-    command:
-      - start
-      - --path
-      - models
+      - /app/models/rasa_nlu/current/nlu
+      - --endpoints
+      - /app/config/endpoints.local.yml
+    stdin_open: true
+    tty: true
+
   action_server:
-    image: rasa/rasa_core_sdk:latest
+    build: actions
+    image: rasa-chatbot-actions:latest
     volumes:
       - ./actions:/app/actions
+    command:
+      - python
+      - -m
+      - rasa_core_sdk.endpoint
+      - --actions
+      - actions.actions
+
