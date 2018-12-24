@@ -1,0 +1,5 @@
+rasa-core
+rasa-nlu[tensorflow]
+spacy
+sklearn-crfsuite
+rasa-core-sdk
