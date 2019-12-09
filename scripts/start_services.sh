@@ -3,7 +3,10 @@
 ### This script is defined in the CMD option in Dockerfile
 
 # Start actions server in background
-python3 -m rasa_core_sdk.endpoint --actions app.actions.actions&
+rasa run actions --actions app.actions&
 
-# Start rasa core server with nlu model
-python3 -m rasa_core.run --enable_api --core /app/models/rasa_core -u /app/models/rasa_nlu/current/nlu --endpoints /app/config/endpoints.yml --credentials /app/config/credentials.yml -p $PORT
+# Start rasa server with nlu model
+rasa run --model /app/models --enable-api \
+        --endpoints /app/config/endpoints.yml \
+        --credentials /app/config/credentials.yml \
+        -p $PORT

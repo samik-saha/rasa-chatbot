@@ -43,22 +43,12 @@ Optionally to run the actions server in separate container start the services us
 ```
 docker-compose up
 ```
-#### Train Dialog model
-The repository already contains a trained dialog model at models/rasa_core. To retrain the model you can run:
-```powershell
-docker run --rm -v ${PWD}:/app rasa-chatbot python3 \
-           -m rasa_core.train -d /app/domain.yml \
-           -s /app/data/stories.md \
-           -o /app/models/rasa_core
-```
-#### Train NLU model
-The repository already contains the trained NLU model at models/rasa_nlu. To retrain NLU model you can run:
-
-```powershell
-docker run --rm -v ${PWD}:/app rasa-chatbot python3 \
-           -m rasa_nlu.train -c /app/config/nlu_config.yml \
-           -d /app/data/nlu.md --fixed_model_name nlu \
-           -o /app/models/rasa_nlu --project current
+#### Train Rasa model
+The repository already contains a trained Rasa model at models directory. To retrain the model you can run:
+```bash
+docker run --rm --volume $(pwd):/app \
+          --workdir /app rasa-chatbot \
+          rasa train --config config/config.yml
 ```
 
 ## Deploy to Heroku
@@ -74,6 +64,6 @@ Another option would be to create a separate app altogether for actions server (
 ## Integration with Facebook
 rasa supports integration with multiple channels. Apart from exposing the REST api over http, we can integrate with facebook. 
 
-Go to https://developers.facebook.com and creat an app. We can handle messages sent to a facebook page from our app. To do so add messenger to the facebook app and subscribe to a page. Update app secret and page tocken in config/credentials.yml. On the facebook app, update the webhook url to the deployed heroku app (https://rasa-chatbot.herokuapp.com/webhooks/facebook/webhook).
+Go to https://developers.facebook.com and creat an app. We can handle messages sent to a facebook page from our app. To do so add messenger to the facebook app and subscribe to a page. Update app secret and page token in config/credentials.yml. On the facebook app, update the webhook url to the deployed heroku app (https://rasa-chatbot.herokuapp.com/webhooks/facebook/webhook).
 
 

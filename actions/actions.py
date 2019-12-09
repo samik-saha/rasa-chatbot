@@ -1,6 +1,6 @@
 import requests
 import json
-from rasa_core_sdk import Action
+from rasa_sdk import Action
 
 
 class ActionJoke(Action):

@@ -10,18 +10,13 @@ services:
       - ./models:/app/models
       - ./config:/app/config
     command:
-      - python3
-      - -m
-      - rasa_core.run
-      - --enable_api
-      - --core
-      - /app/models/rasa_core
-      - -u
-      - /app/models/rasa_nlu/current/nlu
+      - rasa
+      - run
+      - --enable-api
+      - --model
+      - /app/models
       - --endpoints
       - /app/config/endpoints.local.yml
-    stdin_open: true
-    tty: true
 
   action_server:
     build: actions
@@ -29,9 +24,9 @@ services:
     volumes:
       - ./actions:/app/actions
     command:
-      - python
+      - python3
       - -m
-      - rasa_core_sdk.endpoint
+      - rasa_sdk
       - --actions
-      - actions.actions
+      - actions
 
