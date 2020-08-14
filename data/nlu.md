@@ -33,3 +33,14 @@
 - goodbye
 - see you around
 - see you later
+
+## intent:inform
+- [Mississauga] (location)
+- [Toronto] (location)
+- [Kolkata] (location)
+- [Chicago] (location)
+
+## intent:get_weather
+- how is the weather
+- how is the weather today
+- what's the weather like in [Kolkata](location)

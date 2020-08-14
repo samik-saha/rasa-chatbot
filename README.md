@@ -48,7 +48,8 @@ The repository already contains a trained Rasa model at models directory. To ret
 ```bash
 docker run --rm --volume $(pwd):/app \
           --workdir /app rasa-chatbot \
-          rasa train --config config/config.yml
+          rasa train --fixed-model-name rasa-model \
+          --config config.yml
 ```
 
 ## Deploy to Heroku
