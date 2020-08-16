@@ -3,4 +3,4 @@ version: 2.1
 jobs:
     build:
         docker:
-            - image: rasa-chatbot
+            - image: rasa/rasa:latest
