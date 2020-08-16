@@ -1,8 +1,8 @@
 version: 2.1
 jobs:
   build:
-    docker:
-      - image: 'circleci/python:latest'
+    machine: true
     steps:
       - checkout
-      - run: echo 'hello world'
+      - run: docker build -t rasa-chatbot .
+      - run: docker run --rm --volume $(pwd):/app --workdir /app rasa-chatbot rasa data validate
