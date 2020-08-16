@@ -4,4 +4,5 @@ jobs:
     machine: true
     steps:
       - checkout
-      - run: docker run --rm --volume $(pwd):/app --workdir /app rasa/rasa data validate
+      - run: docker run --rm --volume $(pwd):/app --workdir /app rasa/rasa:1.10.10 data validate
+      - run: docker run --volume $(pwd):/app --rm rasa/rasa:1.10.10 test

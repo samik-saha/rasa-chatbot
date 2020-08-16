@@ -6,7 +6,7 @@ pipeline: supervised_embeddings
 # Configuration for Rasa Core.
 # https://rasa.com/docs/rasa/core/policies/
 policies:
-- name: "KerasPolicy"
+- name: "TEDPolicy"
 - name: "MappingPolicy"
 - name: "MemoizationPolicy"
   max_history: 1
