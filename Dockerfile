@@ -19,5 +19,10 @@ ADD ./config.yml /app/
 
 RUN chmod +x /app/scripts/*
 
+WORKDIR /app
+
+# Train model
+RUN rasa train --fixed-model-name rasa-model --config config.yml
+
 ENTRYPOINT []
 CMD /app/scripts/start_services.sh

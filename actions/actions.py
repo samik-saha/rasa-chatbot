@@ -1,6 +1,7 @@
 import requests
 import json
 from rasa_sdk import Action
+import os
 
 
 class ActionJoke(Action):
@@ -18,3 +19,19 @@ class ActionJoke(Action):
     dispatcher.utter_message(joke) #send the message back to the user
     return []
 
+class ActionGetWeather(Action):
+  def name(self):
+    return "action_get_weather"
+  
+  def run(self, dispatcher, tracker, domain):
+    city=tracker.get_slot('location')
+    url = f'https://api.openweathermap.org/data/2.5/weather?q={city}&units=metric&appid={os.getenv("OPENWEATHERMAP_API_KEY")}'
+    weather=requests.get(url).json()
+    #response_loc=weather['name']
+    main=weather['weather'][0]['main']
+    description=weather['weather'][0]['description']
+    temp=weather["main"]["temp"]
+    humidity=weather["main"]["humidity"]
+    feels_like=weather["main"]["feels_like"]
+    dispatcher.utter_message(f'Weather in {city}: {main}, {description}, Temp:{temp}, Humidity:{humidity}, Feels like {feels_like}')
+    return []

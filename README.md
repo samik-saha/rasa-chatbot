@@ -7,10 +7,10 @@ It uses the rasa stack (rasa core/nlu/actions) to implement a simple bot which r
 ## Run on local machine
 
 #### Using docker
-Both action server and rasa-core runs as separate processes in the same container
+Both action server and rasa-core runs as separate processes in the same container. Rename the .env-sample to .env and optionally update the API_KEYs, TOKENs etc.
 ```
 docker build -t rasa-chatbot .
-docker run -it --rm -p 5005:5005 -e PORT=5005 rasa-chatbot
+docker run -it --rm -p 5005:5005 --env-file $(pwd)/.env rasa-chatbot
 ```
 It starts a webserver with rest api and listens for messages at localhost:5005
 
@@ -37,7 +37,13 @@ Access-Control-Allow-Origin: *
 }]
 ```
 
-#### Run using docker compose
+## Try the bot using in terminal
+```bash
+docker run --rm --volume $(pwd):/app --env-file $(pwd)/.env -it\
+          --workdir /app rasa-chatbot bash ./scripts/start_shell.sh
+```
+
+## Run using docker compose
 Optionally to run the actions server in separate container start the services using docker-compose. The action server runs on http://action_server:5055/webhook (docker's internal network). The rasa-core services uses the config/endpoints.local.yml to find this actions server
 
 ```
@@ -56,8 +62,8 @@ docker run --rm --volume $(pwd):/app \
 On heroku free tier we can start two containers using two dynos, but there isn't a way for the containers to communicate with each other on Heroku. So, we push everything (actions server/rasa core/nlu) in the same container.
 
 ```bash
-heroku container:push web
-heroku container:release web
+heroku container:push -a rasa-chatbot web
+heroku container:release -a rasa-chatbot web
 ```
 
 Another option would be to create a separate app altogether for actions server (nlu server can also be run as a separate app), which then can communicate with each other over http.

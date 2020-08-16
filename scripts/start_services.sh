@@ -3,7 +3,7 @@
 ### This script is defined in the CMD option in Dockerfile
 
 # Start actions server in background
-rasa run actions --actions app.actions&
+rasa run actions --actions actions&
 
 # Start rasa server with nlu model
 rasa run --model /app/models --enable-api \

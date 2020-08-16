@@ -1,7 +1,10 @@
 version: '3.0'
 
 services:
+  
   rasa_chatbot:
+    env_file: 
+      - ./.env
     build: .
     image: rasa-chatbot:latest
     ports:
@@ -19,6 +22,8 @@ services:
       - /app/config/endpoints.local.yml
 
   action_server:
+    env_file: 
+      - ./.env
     build: actions
     image: rasa-chatbot-actions:latest
     volumes:

@@ -44,3 +44,5 @@
 - how is the weather
 - how is the weather today
 - what's the weather like in [Kolkata](location)
+- weather in [Toronto](location)
+- how is the weather in [kolkata](location)
