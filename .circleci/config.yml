@@ -4,5 +4,4 @@ jobs:
     machine: true
     steps:
       - checkout
-      - run: docker build -t rasa-chatbot .
-      - run: docker run --rm --volume $(pwd):/app --workdir /app rasa-chatbot rasa data validate
+      - run: docker run --rm --volume $(pwd):/app --workdir /app rasa/rasa data validate
