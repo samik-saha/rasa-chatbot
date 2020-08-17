@@ -29,6 +29,7 @@
 * get_weather
   - utter_ask_location
 * inform{"location": "Mississauga"}
+  - slot{"location": "Mississauga"}
   - action_get_weather
 * goodbye
   - utter_goodbye
