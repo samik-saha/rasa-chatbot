@@ -1,3 +1,4 @@
+from typing import Any, Dict, Text
 import requests
 import json
 from rasa_sdk import Action
@@ -5,10 +6,10 @@ import os
 
 
 class ActionJoke(Action):
-  def name(self):
+  def name(self) -> Text:
     return "action_joke"
 
-  def run(self, dispatcher, tracker, domain):
+  async def run(self, dispatcher, tracker, domain: Dict[Text, Any]):
     url = 'https://api.jokes.one/jod?category=knock-knock'
     headers = {'content-type': 'application/json'}
     joke=requests.get(url, headers=headers).json()['contents']['jokes'][0]['joke']['text']

@@ -1,4 +1,4 @@
-FROM rasa/rasa:1.10.10
+FROM rasa/rasa:latest
 
 USER root
 ADD ./models /app/models/

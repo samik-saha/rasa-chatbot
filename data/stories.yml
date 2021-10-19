@@ -1,0 +1,44 @@
+version: "2.0"
+stories:
+- story: happy_path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_happy
+  - action: utter_happy
+  - intent: goodbye
+  - action: utter_goodbye
+- story: sad_path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: action_joke
+  - intent: goodbye
+  - action: utter_goodbye
+- story: Weather with location
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: get_weather
+    entities:
+    - location: Mississauga
+  - slot_was_set:
+    - location: Mississauga
+  - action: action_get_weather
+  - intent: goodbye
+  - action: utter_goodbye
+- story: Weather
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: get_weather
+  - action: utter_ask_location
+  - intent: inform
+    entities:
+    - location: Mississauga
+  - slot_was_set:
+    - location: Mississauga
+  - action: action_get_weather
+  - intent: goodbye
+  - action: utter_goodbye

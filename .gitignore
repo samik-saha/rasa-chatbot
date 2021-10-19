@@ -5,3 +5,4 @@ __pycache__/
 .env
 results/*
 .DS_Store
+venv

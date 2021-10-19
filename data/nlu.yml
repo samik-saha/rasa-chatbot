@@ -1,0 +1,52 @@
+version: "2.0"
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - good morning
+    - good evening
+    - hey there
+- intent: mood_happy
+  examples: |
+    - perfect
+    - very good
+    - great
+    - amazing
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I'm good
+- intent: mood_unhappy
+  examples: |
+    - sad
+    - very sad
+    - unhappy
+    - bad
+    - very bad
+    - awful
+    - terrible
+    - not very good
+    - extremely sad
+    - so sad
+- intent: goodbye
+  examples: |
+    - bye
+    - goodbye
+    - see you around
+    - see you later
+- intent: inform
+  examples: |
+    - [Mississauga] (location)
+    - [Toronto] (location)
+    - [Kolkata] (location)
+    - [Chicago] (location)
+- intent: get_weather
+  examples: |
+    - how is the weather
+    - how is the weather today
+    - what's the weather like in [Kolkata](location)
+    - weather in [Toronto](location)
+    - how is the weather in [kolkata](location)
+    - weather [Cary, NC](location)
