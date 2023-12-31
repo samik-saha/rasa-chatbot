@@ -53,7 +53,7 @@ docker-compose up
 The repository already contains a trained Rasa model at models directory. To retrain the model you can run:
 ```bash
 docker run --rm --volume $(pwd):/app \
-          --workdir /app rasa/rasa:1.10.10 \
+          --workdir /app rasa/rasa \
           train --fixed-model-name rasa-model \
           --config config.yml
 ```
