@@ -1,37 +1,41 @@
-actions:
-- action_get_weather
-- action_joke
-- utter_ask_location
-- utter_cheer_up
-- utter_default
-- utter_goodbye
-- utter_greet
-- utter_happy
-entities:
-- location
+version: "3.1"
+
 intents:
-- greet
-- get_weather
-- mood_happy
-- mood_unhappy
-- goodbye
-- inform
-responses:
-  utter_ask_location:
-  - text: What is your location?
-  utter_cheer_up:
-  - text: Don't be sad. Keep smiling!
-  utter_default:
-  - text: Hi, I am a stupid bot!
-  utter_goodbye:
-  - text: Goodbye!
-  utter_greet:
-  - text: Hi, how is it going?
-  utter_happy:
-  - text: Great, carry on!
-session_config:
-  carry_over_slots_to_new_session: true
-  session_expiration_time: 480
+  - greet
+  - get_weather
+  - mood_happy
+  - mood_unhappy
+  - goodbye
+  - inform
+
+entities:
+  - location
+
 slots:
   location:
     type: text
+    mappings:
+      - type: from_entity
+        entity: location
+
+responses:
+  utter_ask_location:
+    - text: What is your location?
+  utter_cheer_up:
+    - text: Don't be sad. Keep smiling!
+  utter_default:
+    - text: Hi, I am a stupid bot!
+  utter_goodbye:
+    - text: Goodbye!
+  utter_greet:
+    - text: Hi, how is it going?
+  utter_happy:
+    - text: Great, carry on!
+
+actions:
+  - action_get_weather
+  - action_joke
+
+session_config:
+  carry_over_slots_to_new_session: true
+  session_expiration_time: 60
