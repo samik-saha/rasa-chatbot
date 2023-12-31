@@ -1,4 +1,4 @@
-version: "2.0"
+version: "3.1"
 stories:
 - story: happy_path
   steps:
@@ -16,7 +16,7 @@ stories:
   - action: action_joke
   - intent: goodbye
   - action: utter_goodbye
-- story: Weather with location
+- story: weather_with_location
   steps:
   - intent: greet
   - action: utter_greet
@@ -28,7 +28,7 @@ stories:
   - action: action_get_weather
   - intent: goodbye
   - action: utter_goodbye
-- story: Weather
+- story: weather_without_location
   steps:
   - intent: greet
   - action: utter_greet
